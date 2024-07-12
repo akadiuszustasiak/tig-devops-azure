@@ -1,0 +1,27 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+services:
+  docker: []
+
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    steps:
+    - task: DockerCompose@0
+      inputs:
+        action: 'Build services'
+        dockerComposeFile: 'deploy/docker-compose.yml'
+        
+- stage: Deploy
+  jobs:
+  - job: Deploy
+    steps:
+    - task: DockerCompose@0
+      inputs:
+        action: 'Run services'
+        dockerComposeFile: 'deploy/docker-compose.yml'
