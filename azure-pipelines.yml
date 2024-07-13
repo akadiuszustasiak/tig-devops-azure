@@ -1,20 +1,14 @@
 trigger:
-- main
+- main  # lub inna gałąź, z której chcesz uruchamiać pipeline
 
 pool:
-  name: 'Azure Pipelines' # Użyj nazwy puli agentów, którą utworzyłeś
+  name: 'my-agent-pool'  # Upewnij się, że używasz odpowiedniej nazwy puli
 
 steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.x'
-    addToPath: true
+- checkout: none  # Nie korzystaj z domyślnego repozytorium Azure DevOps
 
 - script: |
-    python --version
-    docker-compose --version
-  displayName: 'Check Python and Docker Compose versions'
-
-- script: |
+    git clone https://github.com/akadiuszustasiak/tig-devops-azure
+    cd tig-devops-azure/deploy
     docker-compose -f docker-compose.yml up -d
   displayName: 'Run Docker Compose'
