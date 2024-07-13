@@ -2,26 +2,19 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: 'my-agent-pool' # Użyj nazwy puli agentów, którą utworzyłeś
 
-services:
-  docker: []
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
 
-stages:
-- stage: Build
-  jobs:
-  - job: Build
-    steps:
-    - task: DockerCompose@0
-      inputs:
-        action: 'Build services'
-        dockerComposeFile: 'deploy/docker-compose.yml'
-        
-- stage: Deploy
-  jobs:
-  - job: Deploy
-    steps:
-    - task: DockerCompose@0
-      inputs:
-        action: 'Run services'
-        dockerComposeFile: 'deploy/docker-compose.yml'
+- script: |
+    python --version
+    docker-compose --version
+  displayName: 'Check Python and Docker Compose versions'
+
+- script: |
+    docker-compose -f docker-compose.yml up -d
+  displayName: 'Run Docker Compose'
