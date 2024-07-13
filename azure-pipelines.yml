@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  name: 'my-agent-pool' # Użyj nazwy puli agentów, którą utworzyłeś
+  name: 'Azure Pipelines' # Użyj nazwy puli agentów, którą utworzyłeś
 
 steps:
 - task: UsePythonVersion@0
