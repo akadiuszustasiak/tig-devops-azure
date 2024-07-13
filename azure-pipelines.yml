@@ -1,11 +1,11 @@
 trigger:
-- main  # lub inna gałąź, z której chcesz uruchamiać pipeline
+- main 
 
 pool:
-  name: 'Azure Pipelines'  # Upewnij się, że używasz odpowiedniej nazwy puli
+  name: 'Azure Pipelines'  
 
 steps:
-- checkout: self  # Nie korzystaj z domyślnego repozytorium Azure DevOps
+- checkout: self 
 
 - script: |
     git clone https://github.com/akadiuszustasiak/tig-devops-azure
