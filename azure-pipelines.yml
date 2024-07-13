@@ -5,7 +5,7 @@ pool:
   name: 'Azure Pipelines'  # Upewnij się, że używasz odpowiedniej nazwy puli
 
 steps:
-- checkout: none  # Nie korzystaj z domyślnego repozytorium Azure DevOps
+- checkout: self  # Nie korzystaj z domyślnego repozytorium Azure DevOps
 
 - script: |
     git clone https://github.com/akadiuszustasiak/tig-devops-azure
