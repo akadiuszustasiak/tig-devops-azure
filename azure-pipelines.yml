@@ -2,7 +2,7 @@ trigger:
 - main  # lub inna gałąź, z której chcesz uruchamiać pipeline
 
 pool:
-  name: 'my-agent-pool'  # Upewnij się, że używasz odpowiedniej nazwy puli
+  name: 'Azure Piprlines'  # Upewnij się, że używasz odpowiedniej nazwy puli
 
 steps:
 - checkout: none  # Nie korzystaj z domyślnego repozytorium Azure DevOps
